@@ -1,10 +1,12 @@
 import redis
+import json
 from datetime import datetime
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
 
 class Article(object):
     def __init__(self):
-        r.flushall()
+        """ remove all db"""
+        #r.flushall()
         print("init")
 
     def time(self):
@@ -12,16 +14,40 @@ class Article(object):
 
     def create(self,text):
         id = r.incr("article_id")
-        ns = "articles:%s" % id
-        print(ns)
-        r.hmset(ns,{"body":text,"created_at":self.time()})
+        json_data = {"id": id,"body":text + " " + str(id),"created_at":self.time()}
+        encoded_data = json.dumps(json_data,indent=4)
+        r.lpush("texts",encoded_data)
+        # data is json
+        for data in r.lrange("texts",0,10):
+            dict_data = json.loads(encoded_data)
+        # json.loads is equal to JSON.parse
+
+
+
+
+    def all(self):
+        data_len =  r.llen("texts")
+        return [json.loads(data) for data in r.lrange("texts",0,data_len)]
+
+
 
 
     def update(self,id):
-        pass
+        # data の id を パースして取得
+        _article = r.lindex("texts",id)
+        print _article
+        return _article
+
+
 
     def destroy(self,id):
         pass
+
+
+    #return output data as a dict 
+    def find(self,id,is_json=False):
+        data_len =  r.llen("texts")
+        return [json.loads(data) for data in r.lrange("texts",0,data_len) if json.loads(data)["id"] == id][0]
 
 
 
