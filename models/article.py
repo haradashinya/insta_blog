@@ -9,8 +9,9 @@ class Article(object):
     def time(self):
         return datetime.now().strftime("%Y %m/%d %H:%m")
 
-    def create(self):
+    def create(self,text):
         print("called create")
+        print(text)
         pass
 
 
