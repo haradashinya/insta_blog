@@ -7,7 +7,7 @@ r = redis.StrictRedis(host="localhost",port=6379,db=0)
 class Article(object):
     def __init__(self):
         """ remove all db"""
-        #r.flushall()
+        r.flushall()
         print("init")
 
     def time(self):
@@ -33,26 +33,45 @@ class Article(object):
 
 
 
-    def find(self,id):
-        data_len = r.llen("texts")
-        all_data = [data for data in r.lrange("texts",0,data_len) if json.loads(data)["id"] == id ]
-
-        return all_data
 
 
+
+    def update(self,id,attr):
+        target = self.find(id)
+        print id,attr["body"]
+        pass
 
 
 
 
 
     def destroy(self,id):
-        pass
+        target = self.find(id)
+        data_len = r.llen("texts")
+        idx = 0
+        for i in range(0,data_len):
+            idx += 1
+            if data_len - idx == id:
+                item =  r.lindex('texts',idx)
+                # remove item element from 'texts'
+                r.lrem("texts",-1,item)
+        items =  [json.loads(data) for data in r.lrange("texts",0,10)]
+        print "id is"
+        for i in items:
+            print i["id"]
+
+
+            
 
 
     #return output data as a dict 
     def find(self,id,is_json=False):
         data_len =  r.llen("texts")
-        return [json.loads(data) for data in r.lrange("texts",0,data_len) if json.loads(data)["id"] == id][0]
+        res = [json.loads(data) for data in r.lrange("texts",0,data_len) if json.loads(data)["id"] == id]
+        if len(res) > 0:
+            return res[0]
+        else:
+            return False
 
 
 

@@ -27,6 +27,8 @@ def create_test():
     """ create article """
     text = 'こんにちは'
     article.create(text)
+    article.create(text)
+    article.create(text)
     
 
 
@@ -45,7 +47,14 @@ def find_test():
 
 def destroy_test():
     """ destroy article"""
+    article.destroy(2)
+    eq_(article.find(2),False)
+    eq_(len(article.all()),2)
+
+def update_test():
     pass
+    #article.update(1,{"body":"updated"})
+
 
 
 
