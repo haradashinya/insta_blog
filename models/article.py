@@ -35,11 +35,9 @@ class Article(object):
 
     def find(self,id):
         data_len = r.llen("texts")
-        all_data = [json.loads(data) for data in r.lrange("texts",0,data_len) ]
-        for i in all_data: 
-            res =  i["id"] == id
-        print res
-        return res
+        all_data = [data for data in r.lrange("texts",0,data_len) if json.loads(data)["id"] == id ]
+
+        return all_data
 
 
 
