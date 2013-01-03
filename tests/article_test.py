@@ -3,6 +3,7 @@ from models.article import Article
 from nose.tools import ok_,eq_
 import redis
 import re
+import json
 
 
 article = Article()
@@ -52,8 +53,10 @@ def destroy_test():
     eq_(len(article.all()),2)
 
 def update_test():
-    pass
-    #article.update(1,{"body":"updated"})
+    """ update id """
+    article.update(1,{"body":'update'})
+    print article.find(1)
+    eq_(article.find(1)['body'].encode('utf-8'),'update')
 
 
 

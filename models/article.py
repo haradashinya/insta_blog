@@ -37,9 +37,14 @@ class Article(object):
 
 
     def update(self,id,attr):
-        target = self.find(id)
-        print id,attr["body"]
-        pass
+        target =  r.lindex("texts",id)
+        """ update body str"""
+        data  = json.loads(target)
+        #data =  json.loads(json.dumps(target))
+        data["body"] = attr["body"].encode('utf-8')
+        r.lset("texts",id,json.dumps(data))
+    
+
 
 
 
