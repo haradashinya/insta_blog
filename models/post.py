@@ -14,10 +14,10 @@ class Post(object):
         dates = []
         for i in res:
             id = i.split(":")[1]
-            print id
             dates.append(
                     {"created_at":r.get(i),
-                    "body":r.get("posts:%s:body" % id)
+                    "body":r.get("posts:%s:body" % id),
+                    "id": id
                     }
                     )
             dates.sort(key=lambda r: r["created_at"],reverse=True)
