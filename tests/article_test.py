@@ -54,9 +54,8 @@ def destroy_test():
 
 def update_test():
     """ update id """
-    article.update(1,{"body":'update'})
-    print article.find(1)
-    eq_(article.find(1)['body'].encode('utf-8'),'update')
+    article.update(1,{"body":u'や'})
+    eq_(article.find(1)['body'],u'や')
 
 
 
