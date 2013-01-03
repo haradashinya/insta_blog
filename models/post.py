@@ -8,15 +8,21 @@ class Post(object):
         print "init post"
 
     
-    """ return all posts"""
+    """ return all posts sort by order"""
     def all(self):
-        l = [r.get(res) for res in r.keys("posts:*:created_at")]
-        print l
-
-
-
-        return [r.get(res) for res in r.keys("posts:*:body*")]
-
+        res = r.keys("posts:*:created_at*")
+        dates = []
+        for i in res:
+            id = i.split(":")[1]
+            print id
+            dates.append(
+                    {"created_at":r.get(i),
+                    "body":r.get("posts:%s:body" % id)
+                    }
+                    )
+            dates.sort(key=lambda r: r["created_at"],reverse=True)
+        return dates
+        
 
     def latest(self):
         return r.get([res for res in r.keys("posts:%s*" % r.get("posts"))])

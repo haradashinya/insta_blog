@@ -12,6 +12,9 @@ def create_test():
     """ create post posts:<id>:body:<value>"""
     post.create(u"apple")
     post.create(u"orange")
+    post.create(u"foo")
+    post.create(u"ffff")
+    post.create(u"3333")
     eq_(r.get("posts:1:body"),"apple")
     eq_(r.get("posts:2:body"),"orange")
     #eq_(r.get("posts:1:created_at"),)
