@@ -12,7 +12,6 @@ article = Article()
 def index():
     # show all blog page
     return render_template("index.html")
-@app.linsert
 
 
 
@@ -21,7 +20,6 @@ def post():
     if request.method == "POST":
         return "success"
     elif request.method == "GET":
-        article.create()
         # render create post page.
         return render_template("new_post.html")
 

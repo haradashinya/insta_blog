@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import redis
 import json
 from datetime import datetime
@@ -32,11 +33,17 @@ class Article(object):
 
 
 
-    def update(self,id):
-        # data の id を パースして取得
-        _article = r.lindex("texts",id)
-        print _article
-        return _article
+    def find(self,id):
+        data_len = r.llen("texts")
+        all_data = [json.loads(data) for data in r.lrange("texts",0,data_len) ]
+        for i in all_data: 
+            res =  i["id"] == id
+        print res
+        return res
+
+
+
+
 
 
 
