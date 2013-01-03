@@ -4,38 +4,68 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Article	app.py	/^from models.article import Article$/;"	i
 Article	models/article.py	/^class Article(object):$/;"	c
 Article	tests/article_test.py	/^from models.article import Article$/;"	i
 Flask	app.py	/^from flask import Flask$/;"	i
+Post	app.py	/^from models.post import Post$/;"	i
+Post	models/post.py	/^class Post(object):$/;"	c
+Post	tests/post_test.py	/^from models.post import Post$/;"	i
 __init__	models/article.py	/^    def __init__(self):$/;"	m	class:Article
+__init__	models/post.py	/^    def __init__(self):$/;"	m	class:Post
 add	tests/article_test.py	/^def add(a,b):$/;"	f
 add_test	tests/article_test.py	/^def add_test():$/;"	f
 all	models/article.py	/^    def all(self):$/;"	m	class:Article
+all	models/post.py	/^    def all(self):$/;"	m	class:Post
 all_test	tests/article_test.py	/^def all_test():$/;"	f
+all_test	tests/post_test.py	/^def all_test():$/;"	f
 app	app.py	/^app = Flask(__name__)$/;"	v
-article	app.py	/^article = Article()$/;"	v
 article	tests/article_test.py	/^article = Article()$/;"	v
+code	app.py	/^import code$/;"	i
 create	models/article.py	/^    def create(self,text):$/;"	m	class:Article
+create	models/post.py	/^    def create(self,body):$/;"	m	class:Post
 create_test	tests/article_test.py	/^def create_test():$/;"	f
+create_test	tests/post_test.py	/^def create_test():$/;"	f
 datetime	models/article.py	/^from datetime import datetime$/;"	i
+datetime	models/post.py	/^from datetime import datetime$/;"	i
 destroy	models/article.py	/^    def destroy(self,id):$/;"	m	class:Article
+destroy	models/post.py	/^    def destroy(self,id):$/;"	m	class:Post
 destroy_test	tests/article_test.py	/^def destroy_test():$/;"	f
+destroy_test	tests/post_test.py	/^def destroy_test():$/;"	f
 eq_	tests/article_test.py	/^from nose.tools import ok_,eq_$/;"	i
+eq_	tests/post_test.py	/^from nose.tools import ok_,eq_$/;"	i
 find	models/article.py	/^    def find(self,id,is_json=False):$/;"	m	class:Article
+find_test	tests/article_test.py	/^def find_test():$/;"	f
 index	app.py	/^def index():$/;"	f
 json	models/article.py	/^import json$/;"	i
+json	models/post.py	/^import json$/;"	i
+json	tests/article_test.py	/^import json$/;"	i
+latest	models/post.py	/^    def latest(self):$/;"	m	class:Post
 ok_	tests/article_test.py	/^from nose.tools import ok_,eq_$/;"	i
+ok_	tests/post_test.py	/^from nose.tools import ok_,eq_$/;"	i
 post	app.py	/^def post():$/;"	f
+post	app.py	/^post = Post()$/;"	v
+post	tests/post_test.py	/^post = Post()$/;"	v
+r	app.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
 r	models/article.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
+r	models/post.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
+r	tests/post_test.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
 re	tests/article_test.py	/^import re$/;"	i
+redis	app.py	/^import redis$/;"	i
 redis	models/article.py	/^import redis$/;"	i
+redis	models/post.py	/^import redis$/;"	i
 redis	tests/article_test.py	/^import redis$/;"	i
+redis	tests/post_test.py	/^import redis$/;"	i
+render	app.py	/^def render():$/;"	f
 render_template	app.py	/^from flask import render_template$/;"	i
 request	app.py	/^from flask import request,url_for$/;"	i
 setup	tests/article_test.py	/^def setup():$/;"	f
+setup	tests/post_test.py	/^def setup():$/;"	f
+test_finish	tests/post_test.py	/^def test_finish():$/;"	f
 time	models/article.py	/^    def time(self):$/;"	m	class:Article
+time	models/post.py	/^    def time(self):$/;"	m	class:Post
 time_test	tests/article_test.py	/^def time_test():$/;"	f
-update	models/article.py	/^    def update(self,id):$/;"	m	class:Article
+update	models/article.py	/^    def update(self,id,attr):$/;"	m	class:Article
+update	models/post.py	/^    def update(self,id,attr):$/;"	m	class:Post
 update_test	tests/article_test.py	/^def update_test():$/;"	f
+update_test	tests/post_test.py	/^def update_test():$/;"	f
 url_for	app.py	/^from flask import request,url_for$/;"	i

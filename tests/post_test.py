@@ -26,6 +26,9 @@ def destroy_test():
     eq_(r.get("posts:1"),None)
 
 
+def all_test():
+    """ return all posts"""
+    eq_(post.all()[1],"orange")
 
 
 def test_finish():

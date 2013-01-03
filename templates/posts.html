@@ -3,6 +3,9 @@
 show all posts
 <div id="container">
     <ul class="posts">
+       {% for post in posts %}
+        <li>{{post}}</li>
+       {% endfor %}
     </ul>
 </div>
 {% endblock %}

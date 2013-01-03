@@ -6,6 +6,16 @@ class Post(object):
     def __init__(self):
         print "init post"
 
+    
+    """ return all posts"""
+    def all(self):
+        return [r.get(res) for res in r.keys("posts:*:body")]
+    
+
+
+    def latest(self):
+        return r.get([res for res in r.keys("posts:%s*" % r.get("posts"))])
+
 
     def time(self):
         return datetime.now().strftime("%Y %m/%d %H:%m")

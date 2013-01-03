@@ -29,13 +29,13 @@ def post():
         text =  request.form["text"].encode("utf-8")
         post.create(text)
         id =  r.get("posts")
-        print r.get(r.keys("posts:%s:body" % id))
         
         
         return "success"
     elif request.method == "GET":
         # render create post page.
-        return render_template("new_post.html")
+        print post.all()
+        return render_template("posts.html",posts = post.all())
 
 @app.route("/new_post",methods=["GET"])
 def render():
