@@ -6,9 +6,10 @@ r = redis.StrictRedis(host="localhost",port=6379,db=0)
 
 class Article(object):
     def __init__(self):
-        """ remove all db"""
+        """ remove all texts"""
         r.flushall()
-        print("init")
+
+        
 
     def time(self):
         return datetime.now().strftime("%Y %m/%d %H:%m")
@@ -30,12 +31,6 @@ class Article(object):
         data_len =  r.llen("texts")
         return [json.loads(data) for data in r.lrange("texts",0,data_len)]
 
-
-
-
-
-
-
     def update(self,id,attr):
         target =  r.lindex("texts",id)
         """ update body str"""
@@ -43,12 +38,6 @@ class Article(object):
         #data =  json.loads(json.dumps(target))
         data["body"] = attr["body"].encode('utf-8')
         r.lset("texts",id,json.dumps(data))
-    
-
-
-
-
-
 
     def destroy(self,id):
         target = self.find(id)
@@ -65,13 +54,9 @@ class Article(object):
         for i in items:
             print i["id"]
 
-
-            
-
-
     #return output data as a dict 
     def find(self,id,is_json=False):
-        data_len =  r.llen("texts")
+        data_len =  r.llen("texts") 
         res = [json.loads(data) for data in r.lrange("texts",0,data_len) if json.loads(data)["id"] == id]
         if len(res) > 0:
             return res[0]
