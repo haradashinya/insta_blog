@@ -4,7 +4,8 @@ show all posts
 <div id="container">
     <ul class="posts">
        {% for post in posts %}
-        <li>{{post}}</li>
+        <li>{{post.decode('utf-8')}}</li>
+        <div class="created_at">{{ p.body_to_created_time(post)}}</div>
        {% endfor %}
     </ul>
 </div>

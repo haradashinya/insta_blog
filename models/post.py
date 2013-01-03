@@ -1,6 +1,7 @@
 import redis
 from datetime import datetime
 import json
+import re
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
 class Post(object):
     def __init__(self):
@@ -9,8 +10,12 @@ class Post(object):
     
     """ return all posts"""
     def all(self):
-        return [r.get(res) for res in r.keys("posts:*:body")]
-    
+        l = [r.get(res) for res in r.keys("posts:*:created_at")]
+        print l
+
+
+
+        return [r.get(res) for res in r.keys("posts:*:body*")]
 
 
     def latest(self):
@@ -18,19 +23,29 @@ class Post(object):
 
 
     def time(self):
-        return datetime.now().strftime("%Y %m/%d %H:%m")
+        return datetime.now()
+
 
     def create(self,body):
         post_id =  r.incr("posts")
         #print post_id
         r.set("posts:%i:body" % (post_id),body)
         r.set("posts:%i:created_at" % (post_id),self.time())
-        print r.get("posts:%i:body" %(post_id))
 
     def update(self,id,attr):
         r.set("posts:%i:body" % id,attr['body']) 
 
     def destroy(self,id):
         for key in  r.keys("posts:%i*" % id):
+
             r.set("key",None)
+
+    def body_to_created_time(self,body):
+        for i in r.keys("*:created_at"):
+            id =  i.split(":")[1]
+            if body ==  r.get("posts:%s:body" % id):
+                return r.get("posts:%s:created_at" % id)
+        #is_body = re.compile('.*post')
+        #is_date = re.compile('.*created_at')
+        return "hello"
 

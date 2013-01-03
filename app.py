@@ -26,16 +26,16 @@ def index():
 def post():
     post = Post()
     if request.method == "POST":
-        text =  request.form["text"].encode("utf-8")
-        post.create(text)
+        text =  request.form["text"]
+        post.create(u"%s" % text)
         id =  r.get("posts")
-        
-        
         return "success"
     elif request.method == "GET":
-        # render create post page.
-        print post.all()
-        return render_template("posts.html",posts = post.all())
+        return render_template("posts.html",posts = post.all(),p = post)
+
+
+
+
 
 @app.route("/new_post",methods=["GET"])
 def render():
