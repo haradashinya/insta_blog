@@ -9,8 +9,6 @@ class Article(object):
         """ remove all texts"""
         r.flushall()
 
-        
-
     def time(self):
         return datetime.now().strftime("%Y %m/%d %H:%m")
 

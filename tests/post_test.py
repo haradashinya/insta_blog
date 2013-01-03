@@ -14,9 +14,16 @@ def create_test():
     post.create(u"orange")
     eq_(r.get("posts:1:body"),"apple")
     eq_(r.get("posts:2:body"),"orange")
+    eq_(r.get("posts:1:created_at"),post.time())
 
 def update_test():
-    post.update(1,{body:"update"})
+    post.update(1,{"body":"update"})
+    eq_(r.get("posts:1:body"),"update")
+
+def destroy_test():
+    """ destroy post """
+    post.destroy(1)
+    eq_(r.get("posts:1"),None)
 
 
 
