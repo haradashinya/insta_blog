@@ -2,16 +2,24 @@
 {% block content %}
 <div id="container">
 	<h1>New Post</h1>
-	<div class="new-post-form">
-		// left
-		<form method="POST" action="/posts">
-			<textarea rows='20' class="area" name="text">
-			</textarea>
-			<p><button type="submit">Post</button></p>
-		</form>
+	<div class="row">
+		<div class="span6">
+			<div class="new-post-form">
+				// left
+				<form method="POST" action="/posts">
+					<textarea rows='20' class="area" name="text">
+					</textarea>
+					<p><button type="submit">Post</button></p>
+				</form>
+			</div>
+		</div>
+		<div class="span6">
+			<div class="output">
+				this is outputted area...
+			</div>
+		</div>
 	</div>
-	<div class="converted-area">
-		this is outputted area...
-	</div>
+
+
 </div>
 {% endblock %}
