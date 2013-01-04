@@ -3,15 +3,22 @@
 	<head>
 		<title>nikki</title>
 		<meta http-equiv="content-type" content="text/html" charset=utf8>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}"/>
+		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap-responsive.css')}}"/>
+
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='layout.css')}}"/>
 	</head>
 	<body>
 		{% block content %}
 		{% endblock %}
+		<script src="static/js/lib/md.js"></script>
 	</body>
     <footer>
     <p>powerd by okamura yasuyuki</p>
     </footer>
+
+
 </html>
 
 

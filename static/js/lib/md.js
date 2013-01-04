@@ -3,31 +3,29 @@ var MarkDown = function(){
 		watch:function(){
 			var $el = $(".area");
 			$el.keydown(function(e){
-				self.compile($el.val(),self.onCompile);
+				self.compileReq($el.val(),self.onCompileReq);
 			});
 		},
 		render: function(text){
 			return $(".output").html(text);
 		},
 		// convert to markdown syntax
-		compile:function(text,callback){
+		compileReq:function(text,callback){
 			$.ajax({
 				type: "POST",
 				url: "/compile",
 				dataType: "json",
-				data: JSON.stringify({"text": text}),
+				data: {"text": text},
 				success:function(data){
 					callback(data);
 				}
 			});
 			self.render(text);
 		},
-		onCompile:function(data){
-			console.log(data);
+		onCompileReq:function(data){
+		console.log(data.text);
 		}
 	};
-
-
 
 	
 	return self;
@@ -40,6 +38,11 @@ var MarkDown = function(){
 $(document).ready(function(){
 	var md = MarkDown();
 	md.watch();
+	var init = function(){
+		$(".area").val("");
+	}();
+	// init val
+
 	console.log($("body"));
 });
 

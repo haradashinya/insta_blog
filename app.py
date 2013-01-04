@@ -1,5 +1,6 @@
 from flask import Flask
 import redis
+import json
 
 from flask import render_template
 from flask import request,url_for
@@ -41,6 +42,13 @@ def post():
 def render():
     return render_template("new_post.html")
 
+
+@app.route("/compile",methods=["POST"])
+# compile plain text to markdown
+def compile():
+    if request.method == "POST":
+        text =  request.form
+        return json.dumps({"text": text})
 
 
 
