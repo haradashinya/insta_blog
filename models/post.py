@@ -42,9 +42,9 @@ class Post(object):
         r.set("posts:%i:body" % id,attr['body']) 
 
     def destroy(self,id):
-        for key in  r.keys("posts:%i*" % id):
-
-            r.set("key",None)
+        for key in  r.keys("posts:%i*" % int(id)):
+            print key
+            r.delete(key)
 
     def body_to_created_time(self,body):
         for i in r.keys("*:created_at"):
