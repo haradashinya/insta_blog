@@ -9,8 +9,9 @@
 			<div class="new-post-form">
                 <form method="POST" action='{{url_for("update_post",post_id=id)}}'>
 					<div>
-					<textarea rows='20' class="area" name="text">
-					</textarea>
+                        <textarea rows='20' class="area" name="text" >
+                            {{text}}
+                        </textarea>
 					</div>
 					<p><button type="submit">Update</button></p>
 				</form>
@@ -23,4 +24,11 @@
 		</div>
 	</div>
 </div>
+<script>
+    $(".area").empty();
+    var t = '{{text}}';
+    setTimeout(function(){
+        $(".area").html(t);
+    },300);
+</script>
 {% endblock %}

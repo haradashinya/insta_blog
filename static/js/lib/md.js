@@ -2,6 +2,9 @@ var MarkDown = function(){
     console.log("init");
     $(".area").empty();
 	var self = {
+		clear:function(){
+			$(".area").empty();
+		},
 		watch:function(){
 			var $el = $(".area");
             $el.keyup(function(e){

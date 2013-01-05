@@ -56,6 +56,7 @@ def delete_post(post_id):
 @app.route("/update_post/<post_id>",methods=["POST"])
 def update_post(post_id):
     print "updated"
+    print r.get("posts:%s:body" % post_id)
     return post_id
 
 
@@ -66,7 +67,8 @@ def render():
 
 @app.route("/edit_post/<post_id>")
 def edit_post(post_id):
-    return render_template("edit_post.html",id=post_id)
+    _text =  r.get("posts:%s:body" % post_id)
+    return render_template("edit_post.html",id=post_id,text = _text)
 
 @app.route("/compile",methods=["POST"])
 # compile plain text to markdown
