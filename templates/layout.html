@@ -13,9 +13,11 @@
 		{% block content %}
 		{% endblock %}
 		<script src="static/js/lib/md.js"></script>
+		<script src="static/js/controllers/posts_controller.js"></script>
 	</body>
     <footer>
     <p>powerd by okamura yasuyuki</p>
+	{% print url_for("index") %}
     </footer>
 
 

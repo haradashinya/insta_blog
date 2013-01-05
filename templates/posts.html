@@ -1,15 +1,20 @@
 {% extends "layout.html"  %}
 {% block content %}
 show all posts
+<div class="row">
 <div id="container">
     <ul class="posts">
        {% for post in posts %}
        <!-- <div class="created_at">{{ p.body_to_created_time(post)}}</div> !-->
        <li><a href="posts/{{post.id}}">{{post.body.split('\n')[0].strip("#")}}</a></li>
        <div class="created_at">{{post.created_at}}</div>
-
-
+	   <button class="edit">Edit</button>
+	   <form action={{url_for('delete_post')}} method='post' >
+		   <input type="hidden" name="_method" value="DELETE"/>
+		   <input type='submit'  value='delete'/>
+	   </form>
        {% endfor %}
     </ul>
+</div>
 </div>
 {% endblock %}

@@ -23,6 +23,9 @@ def index():
     # show all blog page
     return render_template("index.html")
 
+@app.route("/edit_post")
+def edit_post():
+    return render_template("edit_post.html")
 
 
 
@@ -37,8 +40,16 @@ def post():
         return "success"
     elif request.method == "GET":
         return render_template("posts.html",posts = post.all(),p = post)
+    elif request.method == "DELETE":
+        print "called delete"
+        return "removed"
 
 
+@app.route("/delete_post",methods=["DELETE"])
+def delete_post():
+    print request.method
+    print "delete"
+    return 'delete'
 
 
 
