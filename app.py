@@ -22,6 +22,9 @@ post = Post()
 def index():
     # show all blog page
     return render_template("index.html")
+@app.route("/foo/<id>")
+def foo():
+    print "hello"
 
 @app.route("/edit_post")
 def edit_post():

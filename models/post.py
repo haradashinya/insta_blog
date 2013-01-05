@@ -43,7 +43,6 @@ class Post(object):
 
     def destroy(self,id):
         for key in  r.keys("posts:%i*" % int(id)):
-            print key
             r.delete(key)
 
     def body_to_created_time(self,body):

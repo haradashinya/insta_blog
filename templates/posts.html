@@ -9,7 +9,7 @@ show all posts
        <li><a href="posts/{{post.id}}">{{post.body.split('\n')[0].strip("#")}}</a></li>
        <div class="created_at">{{post.created_at}}</div>
 	   <button class="edit">Edit</button>
-	   <a class='btn' href="delete_post/{{post.id}}">delete</a>
+	   <a class='btn' href='{{url_for("delete_post",post_id=post.id)}}'>delete</a>
        {% endfor %}
     </ul>
 </div>
