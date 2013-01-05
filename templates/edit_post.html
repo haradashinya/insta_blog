@@ -10,25 +10,18 @@
                 <form method="POST" action='{{url_for("update_post",post_id=id)}}'>
 					<div>
                         <textarea rows='20' class="area" name="text" >
-                            {{text}}
+                        {{text}}
                         </textarea>
 					</div>
 					<p><button type="submit">Update</button></p>
 				</form>
 			</div>
 		</div>
-		<div class="span3">
-			<div class="output">
+		<div class="span6">
+			<pre class="output">
 				this is outputted area...
-			</div>
+			</pre>
 		</div>
 	</div>
 </div>
-<script>
-    $(".area").empty();
-    var t = '{{text}}';
-    setTimeout(function(){
-        $(".area").html(t);
-    },300);
-</script>
 {% endblock %}

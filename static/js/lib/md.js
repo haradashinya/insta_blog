@@ -1,6 +1,5 @@
 var MarkDown = function(){
-    console.log("init");
-    $(".area").empty();
+	$(".area").html($(".area").val().trim());
 	var self = {
 		clear:function(){
 			$(".area").empty();
@@ -8,7 +7,6 @@ var MarkDown = function(){
 		watch:function(){
 			var $el = $(".area");
             $el.keyup(function(e){
-                console.log($(".area").val());
                 if (e.keyCode === 13){
                 }
                 self.compileReq($(".area").val(),self.onCompileReq);
@@ -42,13 +40,6 @@ var md = MarkDown();
 md.watch();
 
 
-$('code').css({
-    'overflow-x': 'scroll',
-    'background-color': '#f6f6f6',
-    'border': '1px dotted #ccc',
-    'padding': '0.8em'
-});
-$('code').addClass('prettyprint');
 
 
 

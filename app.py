@@ -1,7 +1,6 @@
 from flask import Flask
 import redis
 import json
-
 import markdown
 from flask import render_template
 from flask import request,url_for
@@ -49,14 +48,13 @@ def post():
 @app.route("/delete_post/<post_id>",methods=["POST"])
 def delete_post(post_id):
     post = Post()
-    print request.method
     post.destroy(post_id)
     return "destroy"
 
 @app.route("/update_post/<post_id>",methods=["POST"])
 def update_post(post_id):
-    print "updated"
-    print r.get("posts:%s:body" % post_id)
+    text =  request.form["text"]
+    r.set("posts:%s:body" % post_id,text)
     return post_id
 
 
@@ -65,6 +63,7 @@ def update_post(post_id):
 def render():
     return render_template("new_post.html")
 
+# update text
 @app.route("/edit_post/<post_id>")
 def edit_post(post_id):
     _text =  r.get("posts:%s:body" % post_id)
@@ -75,7 +74,6 @@ def edit_post(post_id):
 def compile():
     if request.method == "POST":
         text = markdown.markdown(u"%s" % request.form["text"])
-        print text
         return json.dumps({"text": text})
 
 
