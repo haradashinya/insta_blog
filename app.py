@@ -26,9 +26,7 @@ def index():
 def foo():
     print "hello"
 
-@app.route("/edit_post")
-def edit_post():
-    return render_template("edit_post.html")
+
 
 
 
@@ -55,6 +53,10 @@ def delete_post(post_id):
     post.destroy(post_id)
     return "destroy"
 
+@app.route("/update_post/<post_id>",methods=["POST"])
+def update_post(post_id):
+    print "updated"
+    return post_id
 
 
 
@@ -62,12 +64,16 @@ def delete_post(post_id):
 def render():
     return render_template("new_post.html")
 
+@app.route("/edit_post/<post_id>")
+def edit_post(post_id):
+    return render_template("edit_post.html",id=post_id)
 
 @app.route("/compile",methods=["POST"])
 # compile plain text to markdown
 def compile():
     if request.method == "POST":
         text = markdown.markdown(u"%s" % request.form["text"])
+        print text
         return json.dumps({"text": text})
 
 

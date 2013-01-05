@@ -8,7 +8,7 @@ show all posts
        <!-- <div class="created_at">{{ p.body_to_created_time(post)}}</div> !-->
        <li><a href="posts/{{post.id}}">{{post.body.split('\n')[0].strip("#")}}</a></li>
        <div class="created_at">{{post.created_at}}</div>
-	   <button class="edit">Edit</button>
+	   <a class='btn' href="{{url_for('edit_post',post_id=post.id)}}">Edit</a>
 	   <form action='{{url_for("delete_post",post_id=post.id)}}' method='post'>
 		   <input type='submit' name='delete' value='delete'/>
 	   </form>

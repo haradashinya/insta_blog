@@ -1,9 +1,13 @@
 var MarkDown = function(){
+    console.log("init");
+    $(".area").empty();
 	var self = {
 		watch:function(){
 			var $el = $(".area");
             $el.keyup(function(e){
                 console.log($(".area").val());
+                if (e.keyCode === 13){
+                }
                 self.compileReq($(".area").val(),self.onCompileReq);
             });
 		},
@@ -27,24 +31,23 @@ var MarkDown = function(){
         }
 	};
 
-	
 	return self;
 };
 
 
+var md = MarkDown();
+md.watch();
 
 
-
-$(document).ready(function(){
-	var md = MarkDown();
-	md.watch();
-	var init = function(){
-		$(".area").val("");
-	}();
-	// init val
-
-	console.log($("body"));
+$('code').css({
+    'overflow-x': 'scroll',
+    'background-color': '#f6f6f6',
+    'border': '1px dotted #ccc',
+    'padding': '0.8em'
 });
+$('code').addClass('prettyprint');
+
+
 
 
 
