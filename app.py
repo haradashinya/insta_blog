@@ -48,9 +48,10 @@ def post():
         return "removed"
 
 
-@app.route("/delete_post/<post_id>")
+@app.route("/delete_post/<post_id>",methods=["POST"])
 def delete_post(post_id):
     post = Post()
+    print request.method
     post.destroy(post_id)
     return "destroy"
 
