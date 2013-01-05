@@ -2,10 +2,14 @@ from flask import Flask
 import redis
 import json
 
+import markdown
 from flask import render_template
 from flask import request,url_for
 #from models.article import Article
 from models.post import Post
+from pygments import highlight
+from pygments.lexers import PythonLexer
+from pygments.formatters import HtmlFormatter
 import code
 app = Flask(__name__)
 
@@ -47,7 +51,8 @@ def render():
 # compile plain text to markdown
 def compile():
     if request.method == "POST":
-        text =  request.form
+        text = markdown.markdown(u"%s" % request.form["text"])
+        print text
         return json.dumps({"text": text})
 
 

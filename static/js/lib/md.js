@@ -2,12 +2,13 @@ var MarkDown = function(){
 	var self = {
 		watch:function(){
 			var $el = $(".area");
-			$el.keydown(function(e){
-				self.compileReq($el.val(),self.onCompileReq);
-			});
+            $el.keyup(function(e){
+                console.log($(".area").val());
+                self.compileReq($(".area").val(),self.onCompileReq);
+            });
 		},
-		render: function(text){
-			return $(".output").html(text);
+		render: function(data){
+			return $(".output").html(data.text);
 		},
 		// convert to markdown syntax
 		compileReq:function(text,callback){
@@ -20,11 +21,10 @@ var MarkDown = function(){
 					callback(data);
 				}
 			});
-			self.render(text);
 		},
-		onCompileReq:function(data){
-		console.log(data.text);
-		}
+        onCompileReq:function(data){
+                         self.render(data);
+        }
 	};
 
 	
