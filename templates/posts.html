@@ -5,7 +5,7 @@ show all posts
     <ul class="posts">
        {% for post in posts %}
        <!-- <div class="created_at">{{ p.body_to_created_time(post)}}</div> !-->
-       <li><a href="posts/{{post.id}}">{{post.body }}</a></li>
+       <li><a href="posts/{{post.id}}">{{post.body.split('\n')[0].strip("#")}}</a></li>
        <div class="created_at">{{post.created_at}}</div>
 
 

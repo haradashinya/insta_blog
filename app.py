@@ -52,7 +52,6 @@ def render():
 def compile():
     if request.method == "POST":
         text = markdown.markdown(u"%s" % request.form["text"])
-        print text
         return json.dumps({"text": text})
 
 
