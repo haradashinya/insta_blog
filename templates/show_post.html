@@ -1,0 +1,15 @@
+{% extends "layout.html"  %}
+{% block content %}
+<div class="row">
+	<div class="span12">
+		<div id="show-body">
+			<div>{% print  body %}</div>
+		</div>
+	</div>
+</div>
+<script src="/static/js/controllers/posts_controller.js"></script>
+<script>
+	var postsController = PostsController();
+	postsController.compileReq("text");
+</script>
+{% endblock %}

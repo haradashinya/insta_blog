@@ -25,9 +25,18 @@ def index():
 def foo():
     print "hello"
 
+def md_compile(text):
+    return json.dumps({"text":markdown.markdown(u"%s" % text)})
 
 
 
+
+@app.route("/posts/<post_id>",methods=["GET"])
+def show_post(post_id):
+    _body = r.get("posts:%s:body" % post_id)
+    compiled_body = markdown.markdown(u"%s" % _body)
+    print compiled_body
+    return  render_template("show_post.html",body = compiled_body )
 
 
 @app.route("/posts",methods=["GET","POST"])
@@ -39,9 +48,8 @@ def post():
         id =  r.get("posts")
         return "success"
     elif request.method == "GET":
-        return render_template("posts.html",posts = post.all(),p = post)
+        return rendet_template("posts.html",posts = post.all(),p = post)
     elif request.method == "DELETE":
-        print "called delete"
         return "removed"
 
 
@@ -76,8 +84,9 @@ def compile():
         text = markdown.markdown(u"%s" % request.form["text"])
         return json.dumps({"text": text})
 
-
-
+@app.route("/show_compile",methods=["POST"])
+def show_compile():
+    return json.dumps({"text": "foo bar"});
 
 
 if __name__ == "__main__":
