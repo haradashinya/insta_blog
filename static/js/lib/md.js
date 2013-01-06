@@ -9,7 +9,7 @@ var MarkDown = function(){
             $el.keyup(function(e){
                 if (e.keyCode === 13){
                 }
-                self.compileReq($(".area").val(),self.onCompileReq);
+                self.compileReq("<pre>" + $(".area").val() + "</pre>",self.onCompileReq);
             });
 		},
 		render: function(data){
