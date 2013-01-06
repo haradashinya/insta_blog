@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from flask import Flask
 import redis
 import json
@@ -34,8 +35,8 @@ def md_compile(text):
 @app.route("/posts/<post_id>",methods=["GET"])
 def show_post(post_id):
     _body = r.get("posts:%s:body" % post_id)
-    compiled_body = markdown.markdown(u"%s" % _body)
-    print compiled_body
+    compiled_body = markdown.markdown(u"%s" % _body.decode("utf-8"))
+
     return  render_template("show_post.html",body = compiled_body )
 
 
@@ -48,7 +49,7 @@ def post():
         id =  r.get("posts")
         return "success"
     elif request.method == "GET":
-        return rendet_template("posts.html",posts = post.all(),p = post)
+        return render_template("posts.html",posts = post.all(),p = post)
     elif request.method == "DELETE":
         return "removed"
 

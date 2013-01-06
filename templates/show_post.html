@@ -3,18 +3,9 @@
 <div class="row">
 	<div class="span12">
 		<div id="show-body">
-			{{ body.encode('utf-8') }}
+			{% print body %}
 		</div>
 	</div>
 </div>
 <script src="/static/js/controllers/posts_controller.js"></script>
-<script>
-	var t = $('#show-body').html('{{body}}').text(); 
-	$("#show-body").html(t);
-
-
-
-
-
-</script>
 {% endblock %}
