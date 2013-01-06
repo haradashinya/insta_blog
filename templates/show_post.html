@@ -3,13 +3,18 @@
 <div class="row">
 	<div class="span12">
 		<div id="show-body">
-			<div>{% print  body %}</div>
+			{{ body.encode('utf-8') }}
 		</div>
 	</div>
 </div>
 <script src="/static/js/controllers/posts_controller.js"></script>
 <script>
-	var postsController = PostsController();
-	postsController.compileReq("text");
+	var t = $('body').html('{{body}}').text(); 
+	$("body").html(t);
+
+
+
+
+
 </script>
 {% endblock %}
