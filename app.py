@@ -75,7 +75,7 @@ def render():
 # update text
 @app.route("/edit_post/<post_id>")
 def edit_post(post_id):
-    _text =  r.get("posts:%s:body" % post_id)
+    _text =  r.get("posts:%s:body" % post_id).decode("utf-8")
     return render_template("edit_post.html",id=post_id,text = _text)
 
 @app.route("/compile",methods=["POST"])
