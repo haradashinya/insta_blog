@@ -54,6 +54,9 @@ def destroy_test():
     command.destroy(1)
     eq_(len(command.show_all()),0)
 
+def handle_command_test():
+    pass
+
 def teardown():
     r.flushdb()
 

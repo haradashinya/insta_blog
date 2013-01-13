@@ -5,7 +5,6 @@ import json
 import markdown
 from flask import render_template
 from flask import request,url_for
-#from models.article import Article
 from models.post import Post
 from pygments import highlight
 from pygments.lexers import PythonLexer
@@ -35,8 +34,7 @@ def md_compile(text):
 @app.route("/posts/<post_id>",methods=["GET"])
 def show_post(post_id):
     _body = r.get("posts:%s:body" % post_id)
-    compiled_body = markdown.markdown(u"%s" % _body.decode("utf-8"))
-    return  render_template("show_post.html",body = compiled_body )
+    return  render_template("show_post.html",body = _body.decode("utf-8"))
 
 
 @app.route("/posts",methods=["GET","POST"])
@@ -44,8 +42,8 @@ def post():
     post = Post()
     if request.method == "POST":
         text =  request.form["text"]
-        post.create(u"%s" % text)
-        id =  r.get("posts")
+        if text != "":
+            post.create(u"%s" % text)
         return "success"
     elif request.method == "GET":
         return render_template("posts.html",posts = post.all(),p = post)

@@ -1,6 +1,8 @@
 import redis
+import sys
 import os
 from models.post import Post
+from optparse import OptionParser
 
 post = Post()
 
@@ -21,13 +23,11 @@ class Command(object):
         post.create(body)
         path = os.getcwd()
         os.remove(path + "/texts/test.md")
-        print "body : %s migrate successfully" % body
 
     def destroy(self,id):
         post.destroy(id)
 
     def show_all(self):
-        print post.all()
         return post.all()
 
 
@@ -38,8 +38,48 @@ class Command(object):
 
 
 
-    def handle_command(self,cmd):
-        pass
+
+
+
+
+command = Command()
+
+
+
+
+
+
+
+def help():
+    print "called help"
+
+def main():
+    args =  sys.argv
+    arg = args[1]
+    print args
+    if arg == "--v":
+        print "1.0"
+        return True
+    elif arg == "--h":
+        print """
+            touch  create text file
+            migrate migrate text file
+        """
+    elif arg == "touch":
+        print "called touch"
+        command.touch("test")
+        print """create text/test.md! feel free to
+        edit"""
+    elif arg == "migrate":
+        command.migrate("test")
+        print "called migrate"
+
+
+
+
+
+if __name__ == "__main__":
+    main()
 
 
 
