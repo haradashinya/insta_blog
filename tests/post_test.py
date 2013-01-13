@@ -6,18 +6,15 @@ from models.post import Post
 post = Post()
 
 def setup():
-    post
+    print "start"
+    r.flushdb()
 
 def create_test():
     """ create post posts:<id>:body:<value>"""
-    post.create(u"apple")
-    post.create(u"orange")
-    post.create(u"foo")
-    post.create(u"ffff")
-    post.create(u"3333")
-    eq_(r.get("posts:1:body"),"apple")
-    eq_(r.get("posts:2:body"),"orange")
-    #eq_(r.get("posts:1:created_at"),)
+    post.create("a")
+    eq_(r.get("posts:1:body"),'a')
+    ok_(r.get("posts:1:created_at"))
+
 
 def update_test():
     post.update(1,{"body":"update"})
@@ -34,6 +31,9 @@ def all_test():
     post.all()
 
 
+
 def test_finish():
     print "called finish"
+def tear_down():
+    r.flushdb()
 

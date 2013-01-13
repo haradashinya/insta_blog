@@ -5,7 +5,7 @@ import re
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
 class Post(object):
     def __init__(self):
-        print "init post"
+        pass
 
     
     """ return all posts sort by order"""

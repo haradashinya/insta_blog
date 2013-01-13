@@ -2,24 +2,59 @@
 
 from nose.tools import ok_,eq_
 from command import Command
+from models.post import Post
+import redis
+r = redis.StrictRedis(host='localhost',port=6379,db=0)
 
 command = Command()
+post = Post()
+
+def setup():
+    r.flushdb()
+    print "setup called"
+
+
 def touch_test():
     command.touch("test")
     f = open("texts/test.md","w")
-    f.write(u"""
-    #hello world 
-    hello world
-    hello world
-    い""".encode("utf-8"))
+    body = u"あ".encode("utf-8").strip()
+    f.write(body)
     f.close()
 
 
 def migrate_test():
+    """ test.mdのファイルを書き換える"""
+    """ migrate(filename) """
+
     command.migrate("test")
     f = open("texts/test.md","r")
     body = f.read()
-    ok_(body)
+    eq_(body.decode("utf-8"),u"あ")
+    eq_(r.get("posts:1:body").decode("utf-8"),u"あ")
     f.close()
+
+def show_all_test():
+    """ return all post"""
+    command.show_all()
+
+
+def update_test():
+    """ should update """
+    command.update(1,{"body":"hello world"})
+def destroy_test():
+    """ should destroy post """
+    """ destroy(<int id>)"""
+    command.destroy(1)
+    eq_(len(command.show_all()),0)
+
+
+
+
+
+
+
+def teardown():
+    r.flushdb()
+
 
 

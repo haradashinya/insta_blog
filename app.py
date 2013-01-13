@@ -36,7 +36,6 @@ def md_compile(text):
 def show_post(post_id):
     _body = r.get("posts:%s:body" % post_id)
     compiled_body = markdown.markdown(u"%s" % _body.decode("utf-8"))
-
     return  render_template("show_post.html",body = compiled_body )
 
 
