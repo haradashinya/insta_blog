@@ -34,7 +34,7 @@ def md_compile(text):
 @app.route("/posts/<post_id>",methods=["GET"])
 def show_post(post_id):
     _body = r.get("posts:%s:body" % post_id)
-    return  render_template("show_post.html",body = _body.decode("utf-8"))
+    return  render_template("show_post.html",body = markdown.markdown(_body.decode("utf-8")))
 
 
 @app.route("/posts",methods=["GET","POST"])
