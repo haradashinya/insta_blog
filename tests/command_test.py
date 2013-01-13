@@ -3,8 +3,8 @@
 from nose.tools import ok_,eq_
 from command import Command
 from models.post import Post
-import redis
-r = redis.StrictRedis(host='localhost',port=6379,db=0)
+from lib.settings import Settings
+r = Settings.r
 
 command = Command()
 post = Post()
@@ -46,12 +46,6 @@ def destroy_test():
     """ destroy(<int id>)"""
     command.destroy(1)
     eq_(len(command.show_all()),0)
-
-
-
-
-
-
 
 def teardown():
     r.flushdb()

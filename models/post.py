@@ -2,7 +2,8 @@ import redis
 from datetime import datetime
 import json
 import re
-r = redis.StrictRedis(host="localhost",port=6379,db=0)
+from lib.settings import Settings
+r = Settings.r
 class Post(object):
     def __init__(self):
         pass

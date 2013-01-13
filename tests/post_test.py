@@ -1,7 +1,8 @@
 from nose.tools import ok_,eq_
 import redis
-r = redis.StrictRedis(host="localhost",port=6379,db=0)
 from models.post import Post
+from lib.settings import Settings
+r = Settings.r
 
 post = Post()
 
