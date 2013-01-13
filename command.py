@@ -4,6 +4,8 @@ from models.post import Post
 
 post = Post()
 
+
+
 class Command(object):
     def __init__(self):
         pass
@@ -17,6 +19,9 @@ class Command(object):
         f = open("texts/" + filename + ".md")
         body =  f.read()
         post.create(body)
+        path = os.getcwd()
+        os.remove(path + "/texts/test.md")
+        print "body : %s migrate successfully" % body
 
     def destroy(self,id):
         post.destroy(id)
@@ -30,4 +35,11 @@ class Command(object):
     """ attr {"body" : "your post content"}"""
     def update(self,id,attr):
         post.update(1,{"body":"update"})
+
+
+
+    def handle_command(self,cmd):
+        pass
+
+
 
