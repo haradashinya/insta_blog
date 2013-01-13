@@ -13,6 +13,7 @@ class Command(object):
         pass
     def touch(self,title):
         f = open("texts/" + title + ".md","w")
+        f.write("#")
         f.close()
         
 

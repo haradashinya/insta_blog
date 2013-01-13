@@ -10,6 +10,13 @@
 
 デファオルトで、一行目に書いた行はタイトルになる。
 
+##Pretty Code Formatting
+	<pre class='prettyprint'>
+	print 'hello world'
+	</pre>
+##Prepare for CLI API
+	>> python command.py touch # create text.md file
+	>> python command.py migrate # migrate it.
 
 # Database settings...
 
