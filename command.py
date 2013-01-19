@@ -54,7 +54,8 @@ def help():
 def main():
     args =  sys.argv
     arg = args[1]
-    v = args[2]
+    if len(args) >= 3:
+        v = args[2]
     # v: id
     if arg == "--v":
         print "1.0"
@@ -74,13 +75,18 @@ def main():
         print "called migrate"
     elif arg == "update":
         ff = open("texts/" + 'test' + ".md")
-        body = ff.read()
-        print body.decode('utf-8')
+        body = ff.read().decode('utf-8')
         ff.close()
         command.update(int(v),{"body": body})
 
     elif arg == "destroy":
         command.destroy(int(v))
+
+    elif arg == "all":
+        for body in  command.show_all():
+            print body['id'] + "\n"
+            print body['body']
+
 
 
 
