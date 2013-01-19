@@ -1,4 +1,4 @@
-import redis
+import redis 
 import sys
 import os
 from models.post import Post
@@ -6,29 +6,27 @@ from optparse import OptionParser
 
 post = Post()
 
-
-
 class Command(object):
     def __init__(self):
         pass
     def touch(self,title,id):
         if id:
             body = post.find(int(id))
-            f = open("texts/" + title + ".md","w")
+            f = open("texts/" + title + ".markdown","w")
             f.write("#" + body)
         else:
-            f = open("texts/" + title + ".md","w")
+            f = open("texts/" + title + ".markdown","w")
             f.write("#")
         
         f.close()
 
     # insert file body into redis database
     def migrate(self,filename):
-        f = open("texts/" + filename + ".md")
+        f = open("texts/" + filename + ".markdown")
         body =  f.read()
         post.create(body)
         path = os.getcwd()
-        os.remove(path + "/texts/test.md")
+        os.remove(path + "/texts/test.markdown")
 
 
 
@@ -47,7 +45,7 @@ class Command(object):
         if self.confirm_update(id,attr) == True:
             post.update(id,attr)
             path = os.getcwd()
-            os.remove(path + "/texts/test.md")
+            os.remove(path + "/texts/test.markdown")
             print "\nupdated!"
         else:
             print "quitted"
@@ -88,6 +86,7 @@ def help():
 def main():
     args =  sys.argv
     arg = args[1]
+    v = None
     if len(args) >= 3:
         v = args[2]
     # v: id
@@ -101,18 +100,18 @@ def main():
         """
     elif arg == "touch":
         print "called touch"
-        if v:
+        if v != None:
             command.touch("test",v)
         else:
-            command.touch("test")
-        print """create text/test.md! feel free to
+            command.touch("test",None)
+        print """create text/test.markdown! feel free to
         edit"""
     elif arg == "migrate":
         command.migrate("test")
         print "called migrate"
     elif arg == "update":
-        ff = open("texts/" + 'test' + ".md")
-        body = ff.read().decode('utf-8')
+        ff = open("texts/" + 'test' + ".markdown")
+        body = ff.read()
         ff.close()
         command.update(int(v),{"body": body})
 

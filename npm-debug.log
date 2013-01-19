@@ -1,0 +1,102 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   '-g',
+1 verbose cli   'install',
+1 verbose cli   'instant-markdown',
+1 verbose cli   'npm',
+1 verbose cli   '-g',
+1 verbose cli   'install',
+1 verbose cli   'instant-markdown-d' ]
+2 info using npm@1.1.62
+3 info using node@v0.8.11
+4 verbose read json /usr/local/lib/package.json
+5 verbose read json /usr/local/lib/package.json
+6 verbose cache add [ 'instant-markdown', null ]
+7 silly cache add name=undefined spec="instant-markdown" args=["instant-markdown",null]
+8 verbose parsed url { pathname: 'instant-markdown',
+8 verbose parsed url   path: 'instant-markdown',
+8 verbose parsed url   href: 'instant-markdown' }
+9 verbose cache add [ 'npm', null ]
+10 silly cache add name=undefined spec="npm" args=["npm",null]
+11 verbose parsed url { pathname: 'npm', path: 'npm', href: 'npm' }
+12 verbose cache add [ 'install', null ]
+13 silly cache add name=undefined spec="install" args=["install",null]
+14 verbose parsed url { pathname: 'install', path: 'install', href: 'install' }
+15 verbose cache add [ 'instant-markdown-d', null ]
+16 silly cache add name=undefined spec="instant-markdown-d" args=["instant-markdown-d",null]
+17 verbose parsed url { pathname: 'instant-markdown-d',
+17 verbose parsed url   path: 'instant-markdown-d',
+17 verbose parsed url   href: 'instant-markdown-d' }
+18 silly lockFile eaf455b2-instant-markdown instant-markdown
+19 verbose lock instant-markdown /Users/haradashinya/.npm/eaf455b2-instant-markdown.lock
+20 silly lockFile 660051d1-npm npm
+21 verbose lock npm /Users/haradashinya/.npm/660051d1-npm.lock
+22 silly lockFile 89fb511f-install install
+23 verbose lock install /Users/haradashinya/.npm/89fb511f-install.lock
+24 silly lockFile 41a51f08-instant-markdown-d instant-markdown-d
+25 verbose lock instant-markdown-d /Users/haradashinya/.npm/41a51f08-instant-markdown-d.lock
+26 silly lockFile eaf455b2-instant-markdown instant-markdown
+27 silly lockFile 660051d1-npm npm
+28 silly lockFile 89fb511f-install install
+29 silly lockFile 41a51f08-instant-markdown-d instant-markdown-d
+30 verbose addNamed [ 'instant-markdown', '' ]
+31 verbose addNamed [ null, '' ]
+32 silly lockFile be93ef9d-instant-markdown instant-markdown@
+33 verbose lock instant-markdown@ /Users/haradashinya/.npm/be93ef9d-instant-markdown.lock
+34 verbose addNamed [ 'npm', '' ]
+35 verbose addNamed [ null, '' ]
+36 silly lockFile 2f990b75-npm npm@
+37 verbose lock npm@ /Users/haradashinya/.npm/2f990b75-npm.lock
+38 verbose addNamed [ 'install', '' ]
+39 verbose addNamed [ null, '' ]
+40 silly lockFile cadb329f-install install@
+41 verbose lock install@ /Users/haradashinya/.npm/cadb329f-install.lock
+42 silly addNameRange { name: 'instant-markdown', range: '', hasData: false }
+43 verbose addNamed [ 'instant-markdown-d', '' ]
+44 verbose addNamed [ null, '' ]
+45 silly lockFile 40ec8289-instant-markdown-d instant-markdown-d@
+46 verbose lock instant-markdown-d@ /Users/haradashinya/.npm/40ec8289-instant-markdown-d.lock
+47 silly addNameRange { name: 'npm', range: '', hasData: false }
+48 silly addNameRange { name: 'install', range: '', hasData: false }
+49 verbose url raw instant-markdown
+50 verbose url resolving [ 'https://registry.npmjs.org/', './instant-markdown' ]
+51 verbose url resolved https://registry.npmjs.org/instant-markdown
+52 info trying registry request attempt 1 at 19:12:26
+53 http GET https://registry.npmjs.org/instant-markdown
+54 silly addNameRange { name: 'instant-markdown-d', range: '', hasData: false }
+55 verbose url raw npm
+56 verbose url resolving [ 'https://registry.npmjs.org/', './npm' ]
+57 verbose url resolved https://registry.npmjs.org/npm
+58 info trying registry request attempt 1 at 19:12:26
+59 http GET https://registry.npmjs.org/npm
+60 verbose url raw install
+61 verbose url resolving [ 'https://registry.npmjs.org/', './install' ]
+62 verbose url resolved https://registry.npmjs.org/install
+63 info trying registry request attempt 1 at 19:12:26
+64 http GET https://registry.npmjs.org/install
+65 verbose url raw instant-markdown-d
+66 verbose url resolving [ 'https://registry.npmjs.org/', './instant-markdown-d' ]
+67 verbose url resolved https://registry.npmjs.org/instant-markdown-d
+68 info trying registry request attempt 1 at 19:12:26
+69 http GET https://registry.npmjs.org/instant-markdown-d
+70 http 404 https://registry.npmjs.org/instant-markdown
+71 silly registry.get cb [ 404,
+71 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+71 silly registry.get     date: 'Sat, 19 Jan 2013 10:10:56 GMT',
+71 silly registry.get     'content-type': 'application/json',
+71 silly registry.get     'content-length': '52',
+71 silly registry.get     'cache-control': 'must-revalidate' } ]
+72 silly lockFile be93ef9d-instant-markdown instant-markdown@
+73 error 404 'instant-markdown' is not in the npm registry.
+73 error 404 You should bug the author to publish it
+73 error 404
+73 error 404 Note that you can also install from a
+73 error 404 tarball, folder, or http url, or git url.
+74 error System Darwin 12.2.0
+75 error command "node" "/usr/local/bin/npm" "-g" "install" "instant-markdown" "npm" "-g" "install" "instant-markdown-d"
+76 error cwd /Users/haradashinya/project/insta_blog
+77 error node -v v0.8.11
+78 error npm -v 1.1.62
+79 error code E404
+80 verbose exit [ 1, true ]

@@ -16,25 +16,25 @@ def setup():
 
 def touch_test():
     command.touch("test")
-    f = open("texts/test.md","w")
+    f = open("texts/test.markdown","w")
     body = u"あ".encode("utf-8").strip()
     f.write(body)
     f.close()
 
 def command_test():
     """ handle command """
-    f = open("texts/test.md",'r')
+    f = open("texts/test.markdown",'r')
     print f.read()
     f.close()
 
 
 
 def migrate_test():
-    """ test.mdのファイルを書き換える"""
+    """ test.markdownのファイルを書き換える"""
     """ migrate(filename) """
 
     command.migrate("test")
-    #f = open("texts/test.md","r")
+    #f = open("texts/test.markdown","r")
     #body = f.read()
     #eq_(body.decode("utf-8"),u"あ")
     #eq_(r.get("posts:1:body").decode("utf-8"),u"あ")

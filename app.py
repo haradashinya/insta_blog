@@ -67,7 +67,8 @@ def delete_post(post_id):
 def update_post(post_id):
     text =  request.form["text"]
     r.set("posts:%s:body" % post_id,text)
-    return post_id
+    flash("updated")
+    return redirect("/posts")
 
 
 
