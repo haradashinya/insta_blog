@@ -11,12 +11,21 @@ from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import HtmlFormatter
 import code
+import hashlib
+from werkzeug.security import generate_password_hash,check_password_hash
 app = Flask(__name__)
 app.secret_key = "admin"
 
 
+m = hashlib.md5()
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
-# create a instance of article
+def set_password_digest():
+    r.set("blog0219:password",generate_password_hash(r.get("blog0219:password")))
+
+set_password_digest()
+
+
+#r.set("generate_password_hash(r.get("blog0219:username"))
 post = Post()
 
 @app.route("/")
@@ -31,7 +40,8 @@ def login():
     elif request.method == "POST":
         if request.form["username"] != r.get("blog0219:username"):
             error = "Invalid Username"
-        elif request.form["password"] != r.get("blog0219:password"):
+        elif not check_password_hash(r.get("blog0219:password"),request.form["password"]):
+            print "Invalid password"
             error = "Invalid Password"
         else:
             session["logged_in"] = True
