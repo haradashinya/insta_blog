@@ -5,12 +5,14 @@ import json
 import markdown
 from flask import render_template
 from flask import request,url_for
+from flask import flash,redirect
 from models.post import Post
 from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import HtmlFormatter
 import code
 app = Flask(__name__)
+app.secret_key = "admin"
 
 
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
@@ -44,18 +46,22 @@ def post():
         text =  request.form["text"]
         if text != "":
             post.create(u"%s" % text)
-        return "success"
+            flash("created")
+            return redirect("/posts")
     elif request.method == "GET":
         return render_template("posts.html",posts = post.all(),p = post)
+
     elif request.method == "DELETE":
-        return "removed"
+        flash("destroyed")
+        return render_template("posts.html",posts = post.all(),p = post)
 
 
 @app.route("/delete_post/<post_id>",methods=["POST"])
 def delete_post(post_id):
     post = Post()
     post.destroy(post_id)
-    return "destroy"
+    flash("destroy")
+    return redirect("/posts")
 
 @app.route("/update_post/<post_id>",methods=["POST"])
 def update_post(post_id):

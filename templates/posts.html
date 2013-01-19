@@ -1,8 +1,7 @@
+<div class="posts">
 {% extends "layout.html"  %}
 {% block content %}
-show all posts
-<div class="row">
-<div id="container">
+    <a id='new-post' href="/new_post">create new post</a>
     <ul class="posts">
        {% for post in posts %}
        <!--post list-->
@@ -12,9 +11,6 @@ show all posts
 	   <form action='{{url_for("delete_post",post_id=post.id)}}' method='post'>
 		   <input type='submit' class='btn' name='delete' value='delete'/>
 	   </form>
-<!--
        {% endfor %}
-    </ul>
-</div>
-</div>
 {% endblock %}
+</div>

@@ -8,12 +8,24 @@
 <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" type="text/css" rel="stylesheet" />
 
 
-		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}"/>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap-responsive.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap-responsive.css')}}"/>
 
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='layout.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/layout.css')}}"/>
 	</head>
 	<body onload="prettyPrint()">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+     <ul class="flashes">
+         {% for message in messages %}
+         <li class='flash-li'>{{message }} </li>
+            {% endfor %}
+     </ul>
+     {% endif %}
+     {% endwith %}
+
+  
     {% block content %}
     {% endblock %}
 	<script src="/static/js/lib/md.js"></script>

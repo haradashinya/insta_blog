@@ -1,12 +1,32 @@
 body {
-    margin: 10px;
+    margin: 0px;
     padding: 0px;
     font-size: 15px;
+    background-color: #ccc;
 }
 
+#new-post {
+    margin: 0px;
+}
+
+.posts {
+    margin: 0px;
+    padding: 0px;
+}
 a {
 
 }
 
 h1 {
+}
+.flash-li {
+    list-style-type: none;
+    background-color: green;
+    margin: 0px;
+    padding-left: 5px;
+    color: white;
+    font-weight: bold;
+}
+.flashes {
+    margin: 0;
 }
