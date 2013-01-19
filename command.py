@@ -35,9 +35,25 @@ class Command(object):
     """ attr is like this ... """
     """ attr {"body" : "your post content"}"""
     def update(self,id,attr):
-        post.update(id,attr)
-        path = os.getcwd()
-        os.remove(path + "/texts/test.md")
+        if self.confirm(id,attr) == True:
+            post.update(id,attr)
+            path = os.getcwd()
+            os.remove(path + "/texts/test.md")
+            print "\nupdated!"
+        else:
+            print "quitted"
+
+    def confirm(self,id,attr):
+        print "you update this article. are you ok? if ok , press yes"
+        print post.find(id)
+        print "\n to\n"
+        print attr['body']
+        raw = raw_input("Enter yes or no,please\n")
+        if raw == "yes":
+            return True
+        else:
+            return False
+        
 
 
 command = Command()

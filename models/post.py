@@ -32,6 +32,8 @@ class Post(object):
     def time(self):
         return datetime.now()
 
+    def find(self,id):
+        return r.get("posts:%i:body" %int(id))
 
     def create(self,body):
         post_id =  r.incr("posts")
