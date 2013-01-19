@@ -4,68 +4,103 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Article	models/article.py	/^class Article(object):$/;"	c
-Article	tests/article_test.py	/^from models.article import Article$/;"	i
+Command	command.py	/^class Command(object):$/;"	c
+Command	tests/command_test.py	/^from command import Command$/;"	i
 Flask	app.py	/^from flask import Flask$/;"	i
+HtmlFormatter	app.py	/^from pygments.formatters import HtmlFormatter$/;"	i
+MarkDown	static/js/lib/md.js	/^var MarkDown = function(){$/;"	f
+MarkDown.self.clear	static/js/lib/md.js	/^	var self = {$/;"	m
+OptionParser	command.py	/^from optparse import OptionParser$/;"	i
 Post	app.py	/^from models.post import Post$/;"	i
+Post	command.py	/^from models.post import Post$/;"	i
 Post	models/post.py	/^class Post(object):$/;"	c
+Post	tests/command_test.py	/^from models.post import Post$/;"	i
 Post	tests/post_test.py	/^from models.post import Post$/;"	i
-__init__	models/article.py	/^    def __init__(self):$/;"	m	class:Article
+PythonLexer	app.py	/^from pygments.lexers import PythonLexer$/;"	i
+Settings	lib/settings.py	/^class Settings(object):$/;"	c
+Settings	models/post.py	/^from lib.settings import Settings$/;"	i
+Settings	tests/command_test.py	/^from lib.settings import Settings$/;"	i
+Settings	tests/post_test.py	/^from lib.settings import Settings$/;"	i
+__init__	command.py	/^    def __init__(self):$/;"	m	class:Command
 __init__	models/post.py	/^    def __init__(self):$/;"	m	class:Post
-add	tests/article_test.py	/^def add(a,b):$/;"	f
-add_test	tests/article_test.py	/^def add_test():$/;"	f
-all	models/article.py	/^    def all(self):$/;"	m	class:Article
 all	models/post.py	/^    def all(self):$/;"	m	class:Post
-all_test	tests/article_test.py	/^def all_test():$/;"	f
 all_test	tests/post_test.py	/^def all_test():$/;"	f
 app	app.py	/^app = Flask(__name__)$/;"	v
-article	tests/article_test.py	/^article = Article()$/;"	v
+body_to_created_time	models/post.py	/^    def body_to_created_time(self,body):$/;"	m	class:Post
 code	app.py	/^import code$/;"	i
-create	models/article.py	/^    def create(self,text):$/;"	m	class:Article
+command	command.py	/^command = Command()$/;"	v
+command	tests/command_test.py	/^command = Command()$/;"	v
+command_test	tests/command_test.py	/^def command_test():$/;"	f
+compile	app.py	/^def compile():$/;"	f
 create	models/post.py	/^    def create(self,body):$/;"	m	class:Post
-create_test	tests/article_test.py	/^def create_test():$/;"	f
 create_test	tests/post_test.py	/^def create_test():$/;"	f
-datetime	models/article.py	/^from datetime import datetime$/;"	i
 datetime	models/post.py	/^from datetime import datetime$/;"	i
-destroy	models/article.py	/^    def destroy(self,id):$/;"	m	class:Article
+delete_post	app.py	/^def delete_post(post_id):$/;"	f
+destroy	command.py	/^    def destroy(self,id):$/;"	m	class:Command
 destroy	models/post.py	/^    def destroy(self,id):$/;"	m	class:Post
-destroy_test	tests/article_test.py	/^def destroy_test():$/;"	f
+destroy_test	tests/command_test.py	/^def destroy_test():$/;"	f
 destroy_test	tests/post_test.py	/^def destroy_test():$/;"	f
-eq_	tests/article_test.py	/^from nose.tools import ok_,eq_$/;"	i
+edit_post	app.py	/^def edit_post(post_id):$/;"	f
+eq_	tests/command_test.py	/^from nose.tools import ok_,eq_$/;"	i
 eq_	tests/post_test.py	/^from nose.tools import ok_,eq_$/;"	i
-find	models/article.py	/^    def find(self,id,is_json=False):$/;"	m	class:Article
-find_test	tests/article_test.py	/^def find_test():$/;"	f
+foo	app.py	/^def foo():$/;"	f
+handle_command_test	tests/command_test.py	/^def handle_command_test():$/;"	f
+help	command.py	/^def help():$/;"	f
+highlight	app.py	/^from pygments import highlight$/;"	i
 index	app.py	/^def index():$/;"	f
-json	models/article.py	/^import json$/;"	i
+json	app.py	/^import json$/;"	i
 json	models/post.py	/^import json$/;"	i
-json	tests/article_test.py	/^import json$/;"	i
 latest	models/post.py	/^    def latest(self):$/;"	m	class:Post
-ok_	tests/article_test.py	/^from nose.tools import ok_,eq_$/;"	i
+main	command.py	/^def main():$/;"	f
+markdown	app.py	/^import markdown$/;"	i
+md_compile	app.py	/^def md_compile(text):$/;"	f
+migrate	command.py	/^    def migrate(self,filename):$/;"	m	class:Command
+migrate_test	tests/command_test.py	/^def migrate_test():$/;"	f
+ok_	tests/command_test.py	/^from nose.tools import ok_,eq_$/;"	i
 ok_	tests/post_test.py	/^from nose.tools import ok_,eq_$/;"	i
+os	command.py	/^import os$/;"	i
 post	app.py	/^def post():$/;"	f
 post	app.py	/^post = Post()$/;"	v
+post	command.py	/^post = Post()$/;"	v
+post	tests/command_test.py	/^post = Post()$/;"	v
 post	tests/post_test.py	/^post = Post()$/;"	v
+postsController	static/js/controllers/posts_controller.js	/^var postsController = PostsController();$/;"	v
 r	app.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
-r	models/article.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
-r	models/post.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
-r	tests/post_test.py	/^r = redis.StrictRedis(host="localhost",port=6379,db=0)$/;"	v
-re	tests/article_test.py	/^import re$/;"	i
+r	models/post.py	/^r = Settings.r$/;"	v
+r	tests/command_test.py	/^r = Settings.r$/;"	v
+r	tests/post_test.py	/^r = Settings.r$/;"	v
+re	models/post.py	/^import re$/;"	i
 redis	app.py	/^import redis$/;"	i
-redis	models/article.py	/^import redis$/;"	i
+redis	command.py	/^import redis$/;"	i
+redis	lib/settings.py	/^import redis$/;"	i
 redis	models/post.py	/^import redis$/;"	i
-redis	tests/article_test.py	/^import redis$/;"	i
 redis	tests/post_test.py	/^import redis$/;"	i
 render	app.py	/^def render():$/;"	f
 render_template	app.py	/^from flask import render_template$/;"	i
 request	app.py	/^from flask import request,url_for$/;"	i
-setup	tests/article_test.py	/^def setup():$/;"	f
+self.compileReq	static/js/lib/md.js	/^		},$/;"	m
+self.onCompileReq	static/js/lib/md.js	/^		},$/;"	m
+self.render	static/js/lib/md.js	/^		},$/;"	m
+self.watch	static/js/lib/md.js	/^		},$/;"	m
+setup	tests/command_test.py	/^def setup():$/;"	f
 setup	tests/post_test.py	/^def setup():$/;"	f
+show_all	command.py	/^    def show_all(self):$/;"	m	class:Command
+show_all_test	tests/command_test.py	/^def show_all_test():$/;"	f
+show_compile	app.py	/^def show_compile():$/;"	f
+show_post	app.py	/^def show_post(post_id):$/;"	f
+sys	command.py	/^import sys$/;"	i
+tear_down	tests/post_test.py	/^def tear_down():$/;"	f
+teardown	tests/command_test.py	/^def teardown():$/;"	f
 test_finish	tests/post_test.py	/^def test_finish():$/;"	f
-time	models/article.py	/^    def time(self):$/;"	m	class:Article
+that.onCompileReq	static/js/controllers/posts_controller.js	/^                   },$/;"	m
 time	models/post.py	/^    def time(self):$/;"	m	class:Post
-time_test	tests/article_test.py	/^def time_test():$/;"	f
-update	models/article.py	/^    def update(self,id,attr):$/;"	m	class:Article
+touch	command.py	/^    def touch(self,title):$/;"	m	class:Command
+touch_test	tests/command_test.py	/^def touch_test():$/;"	f
+update	command.py	/^    def update(self,id,attr):$/;"	m	class:Command
 update	models/post.py	/^    def update(self,id,attr):$/;"	m	class:Post
-update_test	tests/article_test.py	/^def update_test():$/;"	f
+update_post	app.py	/^def update_post(post_id):$/;"	f
+update_test	tests/command_test.py	/^def update_test():$/;"	f
 update_test	tests/post_test.py	/^def update_test():$/;"	f
 url_for	app.py	/^from flask import request,url_for$/;"	i
+window.PostsController	static/js/controllers/posts_controller.js	/^window.PostsController = function(){$/;"	f
+window.PostsController.that.compileReq	static/js/controllers/posts_controller.js	/^    var that = {$/;"	m

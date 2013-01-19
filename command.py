@@ -35,8 +35,13 @@ class Command(object):
     """ attr is like this ... """
     """ attr {"body" : "your post content"}"""
     def update(self,id,attr):
-        print attr
-        #post.update(1,{"body":"update"})
+        body =  f.read()
+        attr = {'body': body}
+        post.update(v,attr)
+        path = os.getcwd()
+        os.remove(path + "/texts/test.md")
+
+
 
 
 
@@ -79,9 +84,9 @@ def main():
         print "called migrate"
     elif arg == "update":
         f = open("texts/" + 'test' + ".md")
-        body =  f.read()
-        attr = {'body': body}
-        post.update(v,attr)
+        command.update(v,attr)
+
+    elif arg == "destroy":
 
 
 
