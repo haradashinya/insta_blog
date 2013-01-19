@@ -3,7 +3,7 @@ from flask import Flask
 import redis
 import json
 import markdown
-from flask import render_template
+from flask import render_template,session
 from flask import request,url_for
 from flask import flash,redirect
 from models.post import Post
@@ -23,9 +23,32 @@ post = Post()
 def index():
     # show all blog page
     return render_template("index.html")
-@app.route("/foo/<id>")
-def foo():
-    print "hello"
+
+@app.route("/login",methods = ["GET","POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
+    elif request.method == "POST":
+        if request.form["username"] != r.get("blog0219:username"):
+            error = "Invalid Username"
+        elif request.form["password"] != r.get("blog0219:password"):
+            error = "Invalid Password"
+        else:
+            session["logged_in"] = True
+            flash("You were logged in")
+            return redirect("/posts")
+        return render_template("login.html",error = error)
+
+
+@app.route("/logout")
+def logout():
+    session.pop("logged_in",None)
+    flash("You were logged out")
+    return redirect("/posts")
+
+
+
+
 
 def md_compile(text):
     return json.dumps({"text":markdown.markdown(u"%s" % text)})
