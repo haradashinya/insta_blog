@@ -2,7 +2,9 @@ import redis
 import sys
 import os
 from models.post import Post
+from models.user import User
 from optparse import OptionParser
+
 
 post = Post()
 
@@ -127,6 +129,11 @@ def main():
         for body in  command.show_all():
             print body['id'] + "\n"
             print body['body']
+    elif arg == "setup":
+        user = User()
+        username =  sys.argv[-2]
+        password = sys.argv[-1]
+        user.setup(username,password)
 
 
 

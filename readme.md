@@ -9,10 +9,8 @@ ff
 
 
 0. Setup Database.
-Connect db and 
-```
-SET blog0219:username 'your username'
-SET blog0219:password 'your password'
+
+>> python command.py setup username password
 
 
 First row is the title of article.
@@ -24,17 +22,7 @@ First row is the title of article.
 	>> python command.py touch # create text.md file
 	>> python command.py migrate # migrate it.
 
-# Database settings...
 
-Article
-	id: auto_incr
-	text: text
-	created_at: datetime
-
-	
-Security
-	name: admin
-	password: password
 
 
 

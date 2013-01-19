@@ -19,10 +19,7 @@ app.secret_key = "admin"
 
 m = hashlib.md5()
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
-def set_password_digest():
-    r.set("blog0219:password",generate_password_hash(r.get("blog0219:password")))
-
-set_password_digest()
+#r.set("blog0219:password",generate_password_hash("harashin0219"))
 
 
 #r.set("generate_password_hash(r.get("blog0219:username"))
