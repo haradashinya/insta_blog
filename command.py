@@ -35,7 +35,8 @@ class Command(object):
     """ attr is like this ... """
     """ attr {"body" : "your post content"}"""
     def update(self,id,attr):
-        post.update(1,{"body":"update"})
+        print attr
+        #post.update(1,{"body":"update"})
 
 
 
@@ -57,6 +58,8 @@ def help():
 def main():
     args =  sys.argv
     arg = args[1]
+    # v: id
+    v = int(args[2])
     print args
     if arg == "--v":
         print "1.0"
@@ -74,6 +77,13 @@ def main():
     elif arg == "migrate":
         command.migrate("test")
         print "called migrate"
+    elif arg == "update":
+        f = open("texts/" + 'test' + ".md")
+        body =  f.read()
+        attr = {'body': body}
+        post.update(v,attr)
+
+
 
 
 
