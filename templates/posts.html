@@ -1,16 +1,28 @@
 <div class="posts">
 {% extends "layout.html"  %}
 {% block content %}
-    <a id='new-post' href="/new_post">create new post</a>
+    {% if admin == True %}
+        <h3><a id='logout' href="/logout">logout</a></h3>
+
+        <h3><a id='new-post' href="/new_post">create new post</a></h3>
+    {% endif %}
+
+
     <ul class="posts">
        {% for post in posts %}
        <!--post list-->
        <li><span class='post-id'>{{post.id}}: </span><a href="{{url_for('show_post',post_id = post.id)}}">{{post.body.split('\n')[0].strip("#").decode("utf-8")}}</a></li>
+       {{admin}}
         <div class="created_at">{{post.created_at |safe}}</div>
+
+
+        {% if admin == True %}
         <a class='btn' href="{{url_for('edit_post',post_id=post.id)}}">Edit</a>
+
 	   <form action='{{url_for("delete_post",post_id=post.id)}}' method='post'>
 		   <input type='submit' class='btn' name='delete' value='delete'/>
 	   </form>
+       {% endif %}
        {% endfor %}
 {% endblock %}
 </div>

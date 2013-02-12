@@ -22,7 +22,6 @@ r = redis.StrictRedis(host="localhost",port=6379,db=0)
 #r.set("blog0219:password",generate_password_hash("harashin0219"))
 
 
-#r.set("generate_password_hash(r.get("blog0219:username"))
 post = Post()
 
 @app.route("/")
@@ -38,7 +37,6 @@ def login():
         if request.form["username"] != r.get("blog0219:username"):
             error = "Invalid Username"
         elif not check_password_hash(r.get("blog0219:password"),request.form["password"]):
-            print "Invalid password"
             error = "Invalid Password"
         else:
             session["logged_in"] = True
@@ -49,9 +47,11 @@ def login():
 
 @app.route("/logout")
 def logout():
+    post = Post()
     session.pop("logged_in",None)
     flash("You were logged out")
-    return redirect("/posts")
+    redirect("/posts")
+    return render_template("posts.html",posts = post.all(),p = post,admin= False)
 
 
 
@@ -66,7 +66,7 @@ def md_compile(text):
 @app.route("/posts/<post_id>",methods=["GET"])
 def show_post(post_id):
     _body = r.get("posts:%s:body" % post_id)
-    return  render_template("show_post.html",body = markdown.markdown(_body.decode("utf-8")))
+    return  render_template("show_post.html",body = markdown.markdown(_body.decode("utf-8"),))
 
 
 @app.route("/posts",methods=["GET","POST"])
@@ -79,7 +79,11 @@ def post():
             flash("created")
             return redirect("/posts")
     elif request.method == "GET":
-        return render_template("posts.html",posts = post.all(),p = post)
+        if session:
+            admin = True
+        else:
+            admin = False
+        return render_template("posts.html",posts = post.all(),p = post,admin= admin)
 
     elif request.method == "DELETE":
         flash("destroyed")
