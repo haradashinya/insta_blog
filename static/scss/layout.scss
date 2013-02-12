@@ -1,12 +1,30 @@
 body {
     margin: 0px auto;
     padding: 20px;
-    font-size: 15px;
-    background-color: #ccc;
+    font-size: 18px;
+    font-style: sans-serif;
+    background-color: white;
 }
 
 #new-post {
     margin: 0px;
+}
+
+li {
+	list-style: none;
+}
+
+
+
+#logout {
+	padding-left: 10px;
+}
+
+#dashboard {
+	background: #ccc;
+	height: 30px;
+	line-height: 10px;
+	font-weight: bold;
 }
 
 .posts {
@@ -17,7 +35,13 @@ a {
 
 }
 
-h1 {
+#content-body {
+	h1 {
+		margin-bottom: 50px;
+	}
+}
+
+.post-title {
 }
 .flash-li {
     list-style-type: none;

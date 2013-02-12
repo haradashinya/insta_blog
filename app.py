@@ -55,6 +55,10 @@ def logout():
 
 
 
+@app.route("/preview")
+def preview():
+    post = Post()
+    return render_template("posts.html",posts = post.all(),p = post,admin = False)
 
 
 def md_compile(text):

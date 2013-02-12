@@ -2,9 +2,14 @@
 {% extends "layout.html"  %}
 {% block content %}
     {% if admin == True %}
-        <h3><a id='logout' href="/logout">logout</a></h3>
+	<h3>status: admin == {{admin}}</h3>
+		<div id="dashboard">
+        <a id='new-post' href="/new_post">New post</a>
 
-        <h3><a id='new-post' href="/new_post">create new post</a></h3>
+		<a id='preview' href='/preview'>preview</a>
+        <a id='logout' href="/logout">Logout</a>
+		</div>
+
     {% endif %}
 
 
@@ -12,7 +17,6 @@
        {% for post in posts %}
        <!--post list-->
        <li><span class='post-id'>{{post.id}}: </span><a href="{{url_for('show_post',post_id = post.id)}}">{{post.body.split('\n')[0].strip("#").decode("utf-8")}}</a></li>
-       {{admin}}
         <div class="created_at">{{post.created_at |safe}}</div>
 
 
