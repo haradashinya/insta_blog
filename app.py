@@ -38,7 +38,7 @@ def previous_page():
 def next_page():
     post = Post()
     print pagination_info
-    if pagination_info["to"]  > 0:
+    if pagination_info["from"]  > 0:
         pagination_info["from"] -= 5
         pagination_info["to"] -= 5
 

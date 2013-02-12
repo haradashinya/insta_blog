@@ -10,8 +10,9 @@ class Post(object):
 
     
     """ return all posts sort by order"""
-    def all(self):
+    def all(self,_from,_to):
         res = r.keys("posts:*:created_at*")
+
         dates = []
         for i in res:
             id = i.split(":")[1]
@@ -22,8 +23,17 @@ class Post(object):
                     }
                     )
             dates.sort(key=lambda r: r["created_at"],reverse=True)
-        return dates
+        return dates[_from:_to]
         
+    def count(self):
+        res = 0
+        for i in r.keys("posts:*:created_at*"):
+            body_id = i.split(":")[1]
+            res += 1
+        return res
+
+
+
 
     def latest(self):
         return r.get([res for res in r.keys("posts:%s*" % r.get("posts"))])

@@ -5,9 +5,8 @@
 	<h3>status: admin == {{admin}}</h3>
 		<div id="dashboard">
         <a id='new-post' href="/new_post">New post</a>
-
-		<a id='preview' href='/preview'>preview</a>
         <a id='logout' href="/logout">Logout</a>
+		<a id='preview' href='/preview'>preview</a>
 		</div>
 
     {% endif %}
@@ -28,5 +27,14 @@
 	   </form>
        {% endif %}
        {% endfor %}
+<a href="prev">Previous</a>
+<a href="next">Next</a>
 {% endblock %}
+
+
+
+
+
+
+
 </div>
