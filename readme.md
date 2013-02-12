@@ -8,9 +8,12 @@ ff
 3. show first row of the text as a header instead of title key.
 
 
-0. Setup Database.
-
+##Setup Database and set username and password
 >> python command.py setup username password
+
+##login 
+
+
 
 
 First row is the title of article.
