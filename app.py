@@ -21,8 +21,18 @@ m = hashlib.md5()
 r = redis.StrictRedis(host="localhost",port=6379,db=0)
 #r.set("blog0219:password",generate_password_hash("harashin0219"))
 
+pagination_info = {
+        "count":5
+        }
 
-post = Post()
+
+
+def render_posts(admin):
+    post = Post()
+    return render_template("posts.html",posts = post.all(0,5),p = post,admin= False)
+
+
+
 
 @app.route("/")
 def index():
@@ -50,15 +60,15 @@ def logout():
     post = Post()
     session.pop("logged_in",None)
     flash("You were logged out")
-    redirect("/posts")
-    return render_template("posts.html",posts = post.all(),p = post,admin= False)
+    return     render_posts(admin = False)
 
 
 
 @app.route("/preview")
 def preview():
-    post = Post()
-    return render_template("posts.html",posts = post.all(),p = post,admin = False)
+    pagination_info["count"] += 1
+    print pagination_info["count"]
+    return render_posts(False)
 
 
 def md_compile(text):
@@ -87,11 +97,11 @@ def post():
             admin = True
         else:
             admin = False
-        return render_template("posts.html",posts = post.all(),p = post,admin= admin)
+        return render_posts(admin)
 
     elif request.method == "DELETE":
         flash("destroyed")
-        return render_template("posts.html",posts = post.all(),p = post)
+        return render_posts()
 
 
 @app.route("/delete_post/<post_id>",methods=["POST"])
