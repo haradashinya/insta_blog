@@ -22,14 +22,31 @@ r = redis.StrictRedis(host="localhost",port=6379,db=0)
 #r.set("blog0219:password",generate_password_hash("harashin0219"))
 
 pagination_info = {
-        "count":5
+        "from":0,
+        "to":5
         }
 
+#### helper methods
+
+def previous_page():
+    post = Post()
+    if  pagination_info["to"] < post.count():
+        pagination_info["from"] += 5
+        pagination_info["to"] += 5
+
+
+def next_page():
+    post = Post()
+    print pagination_info
+    if pagination_info["to"]  > 0:
+        pagination_info["from"] -= 5
+        pagination_info["to"] -= 5
 
 
 def render_posts(admin):
     post = Post()
-    return render_template("posts.html",posts = post.all(0,5),p = post,admin= False)
+    return render_template("posts.html" ,
+            posts = post.all(pagination_info["from"],pagination_info["to"]),p = post,admin= False)
 
 
 
@@ -65,9 +82,7 @@ def logout():
 
 
 @app.route("/preview")
-def preview():
-    pagination_info["count"] += 1
-    print pagination_info["count"]
+def preview_page():
     return render_posts(False)
 
 
@@ -124,6 +139,18 @@ def update_post(post_id):
 def render():
     return render_template("new_post.html")
 
+
+@app.route("/prev")
+def prev():
+    previous_page()
+    return render_posts(False)
+
+@app.route("/next")
+def next():
+    next_page()
+    print ("callffl lnex")
+    return render_posts(False)
+
 # update text
 @app.route("/edit_post/<post_id>")
 def edit_post(post_id):
@@ -140,6 +167,7 @@ def compile():
 @app.route("/show_compile",methods=["POST"])
 def show_compile():
     return json.dumps({"text": "foo bar"});
+
 
 
 if __name__ == "__main__":
